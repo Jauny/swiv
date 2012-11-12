@@ -1,0 +1,19 @@
+<h1><%= @show.name %></h1>
+
+<ul>
+<% @show.seasons.all.each do |season| %>
+  <li>
+    Season <%= season.number %>
+    <ol>
+      <% season.episodes.each do |episode| %>
+        <li>
+          <%= link_to episode.name, 
+              show_season_episode_path(@show, season, episode) %>
+          - <%= episode.air_date %><br>
+          <%= episode.plot %>
+        </li>
+      <% end %>
+    </ol>
+  </li>
+<% end %>
+</ul>

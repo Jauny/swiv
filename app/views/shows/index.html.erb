@@ -1,0 +1,16 @@
+<h1>SEE ALL THE SHOWS!</h1>
+
+<ul>
+  <% Show.all.each do |show| %>
+    <li>
+      <%= link_to show.name, show_path(show.id) %>
+      <ul>
+        <% show.seasons.all.each do |season| %>
+        <li>
+          Season: <%= season.number %> - <%= pluralize(season.episodes.count, "episode") %>
+        </li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>
