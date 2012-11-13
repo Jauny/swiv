@@ -1,12 +1,10 @@
 class ShowsController < ApplicationController
   def index
-    @tracked_show = {}
-    Showsusers.where(:user_id => current_user.id).each do |showuser|
-      @tracked_show[showuser.show_id] = true
-    end
+    @user = current_user
   end
 
   def show
+    @user = current_user
     @show = Show.find(params[:id])
   end
 end
