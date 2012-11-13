@@ -7,8 +7,9 @@ Swiv::Application.routes.draw do
   match '/auth/:provider/callback', to: 'sessions#create'
 
   resources :StaticPages
-
-  resources :showsusers
+  resources :users
+  resources :shows_users
+  resources :episodes_users
 
   resources :shows do
     resources :seasons do

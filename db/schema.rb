@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121113000011) do
+ActiveRecord::Schema.define(:version => 20121113214942) do
 
   create_table "episodes", :force => true do |t|
     t.integer  "number"
@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(:version => 20121113000011) do
     t.date     "air_date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "episodes_users", :id => false, :force => true do |t|
+    t.integer "episode_id"
+    t.integer "user_id"
   end
 
   create_table "seasons", :force => true do |t|
@@ -37,11 +42,9 @@ ActiveRecord::Schema.define(:version => 20121113000011) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "showsusers", :force => true do |t|
-    t.integer  "show_id",    :null => false
-    t.integer  "user_id",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "shows_users", :id => false, :force => true do |t|
+    t.integer "show_id"
+    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|

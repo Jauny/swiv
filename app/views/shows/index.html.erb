@@ -4,10 +4,10 @@
   <% Show.all.each do |show| %>
     <li>
       <%= link_to show.name, show_path(show.id) %> 
-      <% if user_signed_in? && @tracked_show[show.id] %>
-        - <%= link_to "Untrack", showsuser_path(:id => @tracked_show[show.id]), :method => :delete %>
-      <% elsif user_signed_in? && !@tracked_show[show.id] %>
-        - <%= link_to "Track", showsusers_path(:show_id => show.id), :method => :post %>
+      <% if user_signed_in? && @user.shows.include?(show) %>
+        - <%= link_to "Untrack", shows_user_path(:id => show.id), :method => :delete %>
+      <% elsif user_signed_in? && !@user.shows.include?(show) %>
+        - <%= link_to "Track", shows_users_path(:show_id => show.id), :method => :post %>
       <% end %>
       <ul>
         <% show.seasons.all.each do |season| %>
