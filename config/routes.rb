@@ -8,6 +8,8 @@ Swiv::Application.routes.draw do
 
   resources :StaticPages
 
+  resources :showsusers
+
   resources :shows do
     resources :seasons do
       resources :episodes
