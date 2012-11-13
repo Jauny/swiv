@@ -4,7 +4,9 @@
   <% Show.all.each do |show| %>
     <li>
       <%= link_to show.name, show_path(show.id) %> 
-      <% if user_signed_in? && !@tracked_show[show.id] %>
+      <% if user_signed_in? && @tracked_show[show.id] %>
+        - <%= link_to "Untrack", showsuser_path(:id => @tracked_show[show.id]), :method => :delete %>
+      <% elsif user_signed_in? && !@tracked_show[show.id] %>
         - <%= link_to "Track", showsusers_path(:show_id => show.id), :method => :post %>
       <% end %>
       <ul>

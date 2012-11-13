@@ -15,4 +15,19 @@ class ShowsusersController < ApplicationController
     end
   end
 
+  def destroy
+    @showuser = Showsusers.find(params[:id])
+    @showuser.destroy
+
+    if @showuser.destroy
+      flash[:notice] = "Successfully untracked"
+      redirect_to root_path
+    else
+      flash[:warning] = "shit happened"
+      redirect_to root_path
+    end
+
+    
+  end
+
 end
