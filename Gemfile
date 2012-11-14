@@ -21,8 +21,17 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+# Search
+gem 'ransack'
+
+# Users
 gem 'devise'
 
+# Bootstrap
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -2,7 +2,7 @@ Swiv::Application.routes.draw do
 
   devise_for :users
 
-  root :to => "Shows#index"
+  root :to => "StaticPages#index"
 
   match '/auth/:provider/callback', to: 'sessions#create'
 
