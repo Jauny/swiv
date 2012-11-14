@@ -1,45 +1,7 @@
 <div class="hero-unit">
   <h2><%= @show.name %></h2>
 
-  <% @show.seasons.each do |season| %>
-    <table class="table table-striped table-hover table-condensed">
-      <caption>Season <%= season.number %></caption>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Title</th>
-          <th>Plot</th>
-          <th>Air time</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% season.episodes.each do |ep| %>
-          <% if ep.seen?(@user) %>
-          <tr class="success">
-          <% else %>
-          <tr>
-          <% end %>
-            <td><%= ep.number %></td>
-            <td><%= ep.name %></td>
-            <td><%= ep.plot %></td>
-            <td><%= ep.air_date %></td>
-            <td>
-              <% if user_signed_in? && !@user.episodes.include?(ep) %>
-                <%= link_to 'SEEN', episodes_users_path(:episode_id => ep.id,
-                                                        :show_id => @show.id), 
-                                    :method => :post %>
-              <% elsif user_signed_in? && @user.episodes.include?(ep) %>
-                <%= link_to 'UNSEE', episodes_user_path(:id => ep.id,
-                                                         :show_id => @show.id),
-                                     :method => :delete %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
+  <%= render 'episodes_list' %>
 
 </div>
 
