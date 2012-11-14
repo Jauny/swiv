@@ -1,31 +1,33 @@
-<h1><%= @show.name %></h1>
+<div class="hero-unit">
+  <h1><%= @show.name %></h1>
 
-<ul>
-<% @show.seasons.all.each do |season| %>
-  <li>
-    Season <%= season.number %>
-    <ol>
-      <% season.episodes.each do |episode| %>
-        <li>
-          <%= link_to episode.name, 
-              show_season_episode_path(@show, season, episode) %>
-          - <%= episode.air_date %> | 
+  <ul>
+  <% @show.seasons.all.each do |season| %>
+    <li>
+      Season <%= season.number %>
+      <ol>
+        <% season.episodes.each do |episode| %>
+          <li>
+            <%= link_to episode.name, 
+                show_season_episode_path(@show, season, episode) %>
+            - <%= episode.air_date %> | 
 
-          <% if user_signed_in? && !@user.episodes.include?(episode) %>
-            <%= link_to 'SEEN', episodes_users_path(:episode_id => episode.id,
-                                                    :show_id => @show.id), 
-                                :method => :post %>
-          <% elsif user_signed_in? && @user.episodes.include?(episode) %>
-            <%= link_to 'UNSEE', episodes_user_path(:id => episode.id,
-                                                     :show_id => @show.id),
-                                 :method => :delete %>
-          <% end %>
+            <% if user_signed_in? && !@user.episodes.include?(episode) %>
+              <%= link_to 'SEEN', episodes_users_path(:episode_id => episode.id,
+                                                      :show_id => @show.id), 
+                                  :method => :post %>
+            <% elsif user_signed_in? && @user.episodes.include?(episode) %>
+              <%= link_to 'UNSEE', episodes_user_path(:id => episode.id,
+                                                       :show_id => @show.id),
+                                   :method => :delete %>
+            <% end %>
 
-              <br>
-          <%= episode.plot %>
-        </li>
-      <% end %>
-    </ol>
-  </li>
-<% end %>
-</ul>
+                <br>
+            <%= episode.plot %>
+          </li>
+        <% end %>
+      </ol>
+    </li>
+  <% end %>
+  </ul>
+</div>

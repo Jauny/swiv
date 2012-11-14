@@ -1,21 +1,21 @@
-<h1>SEE ALL THE SHOWS!</h1>
+<div class="hero-unit">
+  <h1>SEE ALL THE SHOWS!</h1>
 
-<ul>
-  <% Show.all.each do |show| %>
-    <li>
-      <%= link_to show.name, show_path(show.id) %> 
-      <% if user_signed_in? && @user.shows.include?(show) %>
-        - <%= link_to "Untrack", shows_user_path(:id => show.id), :method => :delete %>
-      <% elsif user_signed_in? && !@user.shows.include?(show) %>
-        - <%= link_to "Track", shows_users_path(:show_id => show.id), :method => :post %>
-      <% end %>
-      <ul>
-        <% show.seasons.all.each do |season| %>
-        <li>
-          Season: <%= season.number %> - <%= pluralize(season.episodes.count, "episode") %>
-        </li>
+  <ul class="thumbnails">
+
+    <% Show.all.each do |show| %>
+      <li class="span3">
+        <img src="http://placehold.it/260x120"><br>
+        <%= link_to show.name, show_path(show.id) %> 
+
+        <% if user_signed_in? && @user.shows.include?(show) %>
+          - <%= link_to "Untrack", shows_user_path(:id => show.id), :method => :delete %>
+        <% elsif user_signed_in? && !@user.shows.include?(show) %>
+          - <%= link_to "Track", shows_users_path(:show_id => show.id), :method => :post %>
         <% end %>
-      </ul>
-    </li>
-  <% end %>
-</ul>
+
+      </li>
+    <% end %>
+    
+  </ul>
+</div>

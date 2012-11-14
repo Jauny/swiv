@@ -7,4 +7,5 @@ class ShowsController < ApplicationController
     @user = current_user
     @show = Show.find(params[:id])
   end
+
 end

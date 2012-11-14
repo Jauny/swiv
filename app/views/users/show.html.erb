@@ -1,13 +1,19 @@
-<h1>
-  <%= image_tag avatar_url(@user) %> 
-  <%= @user.email %>
-</h1>
+<div class="hero-unit">
+  <h2>
+    <%= image_tag avatar_url(@user) %> 
+    <%= @user.email %>
+  </h2>
 
-<h2>Tracked shows</h2>
-<ul>
-  <% @user.shows.each do |show| %>
-  <li>
-    <%= link_to show.name, show_path(show.id) %>
-  </li>
-  <% end %>
-</ul>
+  <h2>Tracked shows</h2>
+
+  <ul class="thumbnails">
+
+    <% @user.shows.each do |show| %>
+      <li class="span3">
+        <img src="http://baconmockup.com/260/120"><br>
+        <%= link_to show.name, show_path(show.id) %> 
+      </li>
+    <% end %>
+    
+  </ul>
+</div>
