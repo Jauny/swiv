@@ -1,10 +1,10 @@
 <div class="hero-unit">
-  <h1>SEE ALL THE SHOWS!</h1>
+  <h2>SEE ALL THE SHOWS!</h2>
 
-  <ul class="thumbnails">
+  <ul class="thumbnails thumbnails-shows">
 
     <% @shows.each do |show| %>
-      <li class="span3">
+      <li class="span3 thumbnails">
         <img src="http://placehold.it/260x120"><br>
         <%= link_to show.name, show_path(show.id) %> 
 
