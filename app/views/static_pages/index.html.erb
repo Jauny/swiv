@@ -1,7 +1,8 @@
 <div class="hero-unit" id="hero-main">
-    <h1>Find a show</h1>
-    <%= form_tag "@show" do %>
-      <%= text_field_tag :search, params[:search], :id => "textfield-main" %>
-      <%= submit_tag "Search", :name => nil, :class => "btn btn-large" %> 
-    <% end %> 
+  <h1>Find a show</h1>
+
+  <%= search_form_for @search do |f| %>
+    <%= f.text_field :name_cont, :id => "textfield-main" %>
+    <%= f.submit "Search", :class => "btn btn-large" %>
+  <% end %>
 </div>

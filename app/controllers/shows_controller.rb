@@ -1,6 +1,8 @@
 class ShowsController < ApplicationController
   def index
     @user = current_user
+    @search = Show.search(params[:q])
+    @shows = @search.result
   end
 
   def show

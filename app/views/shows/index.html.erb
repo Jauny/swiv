@@ -3,7 +3,7 @@
 
   <ul class="thumbnails">
 
-    <% Show.all.each do |show| %>
+    <% @shows.each do |show| %>
       <li class="span3">
         <img src="http://placehold.it/260x120"><br>
         <%= link_to show.name, show_path(show.id) %> 

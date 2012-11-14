@@ -21,8 +21,14 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+# Search
+gem 'ransack'
+
+# Users
 gem 'devise'
 
+# Bootstrap
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
