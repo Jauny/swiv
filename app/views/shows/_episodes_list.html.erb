@@ -3,11 +3,11 @@
       <caption>Season <%= season.number %></caption>
       <thead>
         <tr>
-          <th>#</th>
-          <th>Title</th>
-          <th>Plot</th>
-          <th>Air time</th>
-          <th>Status</th>
+          <th width="2%">#</th>
+          <th width="20%">Title</th>
+          <th width="63%">Plot</th>
+          <th width="10%">Air time</th>
+          <th width="5%">Status</th>
         </tr>
       </thead>
       <tbody>
@@ -21,13 +21,13 @@
             <td><%= ep.name %></td>
             <td><%= ep.plot %></td>
             <td><%= ep.air_date %></td>
-            <td>
+            <td style="text-align:center;">
               <% if user_signed_in? && !@user.episodes.include?(ep) %>
-                <%= link_to 'SEEN', episodes_users_path(:episode_id => ep.id,
+                <%= link_to '<i class="icon-remove"></i>'.html_safe, episodes_users_path(:episode_id => ep.id,
                                                         :show_id => @show.id), 
                                     :method => :post %>
               <% elsif user_signed_in? && @user.episodes.include?(ep) %>
-                <%= link_to 'UNSEE', episodes_user_path(:id => ep.id,
+                <%= link_to '<i class="icon-ok"></i>'.html_safe, episodes_user_path(:id => ep.id,
                                                          :show_id => @show.id),
                                      :method => :delete %>
               <% end %>
