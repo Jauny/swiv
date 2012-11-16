@@ -1,7 +1,18 @@
 <div class="hero-unit">
   <h2><%= @show.name %></h2>
 
-  <%= render 'episodes_list' %>
+  <section id="tabs">
+    <ul class="nav nav-tabs" id="seasons-tabs">
+      <% @show.seasons.each do |season| %>
+        <li>
+          <a href=<%= "##{season.number}" %>>Season <%= season.number %></a>
+        </li>
+      <% end %>
+    </ul>
+
+    <%= render 'episodes_list' %>
+
+  </section>
 
 </div>
 
