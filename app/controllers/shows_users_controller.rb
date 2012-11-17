@@ -2,16 +2,24 @@ class ShowsUsersController < ApplicationController
 
   def create
     @user = current_user
-    @user.shows << Show.find(params[:show_id])
+    @show = Show.find(params[:show_id])
+    @user.shows << @show
 
-    redirect_to shows_path
+    respond_to do |format|
+      format.js   { render 'replace_track.js' }
+      format.html { redirect_to(shows_path) }
+    end
   end
 
   def destroy
     @user = current_user
-    @user.shows.delete(Show.find(params[:id]))
+    @show = Show.find(params[:id])
+    @user.shows.delete(@show)
 
-    redirect_to shows_path
+    respond_to do |format|
+      format.js   { render 'replace_track.js' }
+      format.html { redirect_to(shows_path) }
+    end
   end
 
 end
