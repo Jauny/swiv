@@ -7,4 +7,8 @@ class Episode < ActiveRecord::Base
   def seen?(user)
     user.episodes.include?(self)
   end
+
+  def mark_seen(user)
+    user.episodes << self
+  end
 end

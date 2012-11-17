@@ -1,0 +1,7 @@
+<small id="all_seen" class="pull-right">
+  <% if season.all_seen?(current_user) %>
+    all seen <i class="icon-ok"></i>
+  <% else %>
+    <%= link_to "see all", mark_all_seen_season_path(season.id), :remote => true %>
+  <% end %>
+</small>

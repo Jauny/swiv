@@ -5,6 +5,7 @@ Swiv::Application.routes.draw do
   root :to => "StaticPages#index"
 
   match '/auth/:provider/callback', to: 'sessions#create'
+  match '/seasons/:id/mark_all_seen', to: 'seasons#mark_all_seen', as: 'mark_all_seen_season'
 
   resources :StaticPages
   resources :users
