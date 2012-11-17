@@ -1,0 +1,9 @@
+<td id="status_<%= dom_id(ep) %>" style="text-align:center;">
+  <% if user_signed_in? && !@user.episodes.include?(ep) %>
+    <%= link_to '<i class="icon-remove"></i>'.html_safe, episodes_users_path(:episode_id => ep.id, :show_id => @show.id),
+                                                         :method => :post, :remote => true %>
+  <% elsif user_signed_in? && @user.episodes.include?(ep) %>
+    <%= link_to '<i class="icon-ok"></i>'.html_safe, episodes_user_path(:id => ep.id, :show_id => @show.id),
+                                                    :method => :delete, :remote => true %>
+  <% end %>
+</td>

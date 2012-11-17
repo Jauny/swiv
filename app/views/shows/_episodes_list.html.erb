@@ -21,17 +21,7 @@
             <td><%= ep.name %></td>
             <td><%= ep.plot %></td>
             <td><%= ep.air_date %></td>
-            <td style="text-align:center;">
-              <% if user_signed_in? && !@user.episodes.include?(ep) %>
-                <%= link_to '<i class="icon-remove"></i>'.html_safe, episodes_users_path(:episode_id => ep.id,
-                                                        :show_id => @show.id), 
-                                    :method => :post %>
-              <% elsif user_signed_in? && @user.episodes.include?(ep) %>
-                <%= link_to '<i class="icon-ok"></i>'.html_safe, episodes_user_path(:id => ep.id,
-                                                         :show_id => @show.id),
-                                     :method => :delete %>
-              <% end %>
-            </td>
+            <%= render :partial => 'status_icon', :locals => { ep: ep } %>
           </tr>
         <% end %>
       </tbody>
