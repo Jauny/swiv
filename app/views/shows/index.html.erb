@@ -7,13 +7,14 @@
       <li class="span2 thumbnails">
         <img src="http://placehold.it/260x120"><br>
         <%= link_to show.name, show_path(show.id) %> 
-
-        <% if user_signed_in? && @user.shows.include?(show) %>
-          - <%= link_to "Untrack", shows_user_path(:id => show.id), :method => :delete %>
-        <% elsif user_signed_in? && !@user.shows.include?(show) %>
-          - <%= link_to "Track", shows_users_path(:show_id => show.id), :method => :post %>
-        <% end %>
-
+        <br>
+        <div class="track">
+          <% if user_signed_in? && @user.shows.include?(show) %>
+            <%= link_to '<i class="icon-remove"></i>untrack'.html_safe, shows_user_path(:id => show.id), :method => :delete, :remote => true %>
+          <% elsif user_signed_in? && !@user.shows.include?(show) %>
+            <%= link_to '<i class="icon-ok"></i>track'.html_safe, shows_users_path(:show_id => show.id), :method => :post, :remote => true %>
+          <% end %>
+        </div>
       </li>
     <% end %>
     
