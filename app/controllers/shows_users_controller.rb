@@ -6,7 +6,7 @@ class ShowsUsersController < ApplicationController
     @user.shows << @show
 
     respond_to do |format|
-      format.js   { render }
+      format.js   { render 'replace_track.js' }
       format.html { redirect_to(shows_path) }
     end
   end
