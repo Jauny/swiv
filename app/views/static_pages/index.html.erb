@@ -1,10 +1,15 @@
 <div class="hero-unit" id="hero-main">
   <h1>Find a show</h1>
 
+  <p>
+    <%= mail_to "jypepin@gmail.com", "Make a request" %>
+  </p>
+
   <div id="form-main">
     <%= search_form_for @search do |f| %>
       <%= f.text_field :name_cont, :id => "textfield-main" %>
       <%= f.submit "Search", :class => "btn btn-large" %>
     <% end %>
   </div>
+
 </div>

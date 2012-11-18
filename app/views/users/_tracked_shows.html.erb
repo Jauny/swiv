@@ -2,8 +2,8 @@
 
   <% @user.shows.each do |show| %>
     <li class="span2">
-      <img src="http://baconmockup.com/260/120"><br>
-      <%= link_to show.name, show_path(show.id) %> 
+      <%= image_tag show.image %><br>
+      <%= link_to show.name, show_path(show.id) %>
     </li>
   <% end %>
   

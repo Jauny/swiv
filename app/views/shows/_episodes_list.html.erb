@@ -14,7 +14,8 @@
         </tr>
       </thead>
       <tbody>
-        <% sorted_episodes = season.episodes.sort { |a,b| b.air_date <=> a.air_date } %>
+
+        <% sorted_episodes = season.episodes.sort { |a,b| b.number <=> a.number } %>
         <% sorted_episodes.each do |ep| %>
           <% if @user && ep.seen?(@user) %>
             <tr class="success">

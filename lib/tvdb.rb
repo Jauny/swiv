@@ -17,10 +17,11 @@ module TVDB
   end
 
   def self.parse_show(xml, series_id)
-    name = xml['Data']['Series']['SeriesName']
-    plot = xml['Data']['Series']['Overview']
+    name  = xml['Data']['Series']['SeriesName']
+    plot  = xml['Data']['Series']['Overview']
+    image = "http://www.thetvdb.com/banners/" + xml['Data']['Series']['poster']
 
-    Show.create(name: name, plot: plot)
+    Show.create(name: name, plot: plot, image: image)
   end
 
   def self.parse_season(xml, show)
