@@ -1,10 +1,31 @@
 <div class="hero-unit">
   <h2>
     <%= image_tag avatar_url(@user) %> 
-    <%= @user.email %>
+    <%= @user.name %>
+    <% if @user == current_user %>
+      <%= link_to "(edit)", edit_user_registration_path %>
+    <% end %>
   </h2>
 
-  <h2>Tracked shows</h2>
-  <%= render 'tracked_shows' %>
-  
+  <section id="tabs">
+    <ul class="nav nav-tabs" id="user_profile_tabs">
+      <li><a href="#shows">Shows</a></li>
+      <li><a href="#episodes">Episodes</a></li>
+    </ul>
+
+    <div id="shows">
+      <h2>
+        <%= @user.shows.count == 0 ? "0 show" : pluralize(@user.shows.count, "show") %> tracked.
+      </h2>
+      <%= render :partial => 'tracked_shows' %>
+    </div>
+
+    <div id="episodes">
+      <h2>
+        <%= @user.episodes.count == 0 ? "0 episode" : pluralize(@user.episodes.count, "episode") %> seen.
+      </h2>
+      <%= render :partial => 'episodes_seen' %>
+    </div>
+    
+  </section>
 </div>
