@@ -8,8 +8,8 @@ jQuery(function($) {
   }
 
   function showTabs(activeTab){
-    $("#tabs table").hide();
-    $(activeTab).show();
+    $("#tabs table").removeClass("active").hide();
+    $(activeTab).addClass("active").show();
   }
 
   $("#tabs li").click(changeTab);
