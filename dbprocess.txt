@@ -1,0 +1,38 @@
+_______________________
+## Database first build
+  TVDB.build_all! with show ids
+  
+  Save lastUpdateTime
+    http://www.thetvdb.com/api/Updates.php?type=none
+
+    servertime = HTTParty.get(http://www.thetvdb.com/api/Updates.php?type=none)["Items"]["Time"]
+    Update.create(servertime: servertime)
+
+________________
+## Search a show
+  From the tvdb database
+    http://www.thetvdb.com/api/GetSeries.php?seriesname=<user's query>
+
+  Show#search shows the show found from that search
+
+__________________
+## Click on a show
+  If Show.find_by_tvdbid
+    go to shows#show page
+  If not found
+    TVDB.build_all!(tvdbid)
+    go to shows#show page
+
+__________________
+## Update database
+  Once a week/day/wtv
+    http://www.thetvdb.com/api/Updates.php?type=series&time=<lastUpdateTime>
+
+  For each updated series, if present in DB
+    http://www.thetvdb.com/api/BA027FC13CC4F4A9/series/<series_id>/en.xml
+    
+    IF new season
+      add season + shows
+    ELSE show.seasons.last
+      add shows not present
+

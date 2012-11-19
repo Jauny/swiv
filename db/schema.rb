@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121119002011) do
+ActiveRecord::Schema.define(:version => 20121119181121) do
 
   create_table "episodes", :force => true do |t|
     t.integer  "number"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20121119002011) do
     t.date     "air_date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "tvdbid"
   end
 
   create_table "episodes_users", :id => false, :force => true do |t|
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20121119002011) do
     t.integer  "show_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "tvdbid"
   end
 
   create_table "shows", :force => true do |t|
@@ -42,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20121119002011) do
     t.datetime "updated_at", :null => false
     t.string   "image"
     t.string   "banner"
+    t.integer  "tvdbid"
   end
 
   create_table "shows_users", :id => false, :force => true do |t|

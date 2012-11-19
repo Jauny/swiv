@@ -21,6 +21,7 @@ module TVDB
     plot   = xml['Data']['Series']['Overview']
     image  = "http://www.thetvdb.com/banners/" + xml['Data']['Series']['poster']
     banner = "http://www.thetvdb.com/banners/" + xml['Data']['Series']['banner']
+    tvdbid = xml['Data']['Series']['id']
 
     Show.create(name: name, plot: plot, image: image)
   end
