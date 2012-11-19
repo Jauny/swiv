@@ -12,6 +12,8 @@ Swiv::Application.routes.draw do
   resources :shows_users
   resources :episodes_users
 
+  match '/shows/search' => 'shows#search', :as => :show_search
+  match 'shows/import'  => 'shows#import(:id)', :as => :show_import
   resources :shows do
     resources :seasons do
       resources :episodes

@@ -23,7 +23,11 @@ module TVDB
     banner = "http://www.thetvdb.com/banners/" + xml['Data']['Series']['banner']
     tvdbid = xml['Data']['Series']['id']
 
-    Show.create(name: name, plot: plot, image: image)
+    s = Show.new(name: name, plot: plot, image: image, banner: banner, tvdbid: tvdbid )
+    s.id = tvdbid
+    s.save
+    return s
+
   end
 
   def self.parse_season(xml, show)
@@ -40,11 +44,14 @@ module TVDB
                end
 
     episodes.map   do |episode|
-      Episode.create( number:episode["Combined_episodenumber"],
+      e = Episode.new( number:episode["Combined_episodenumber"],
                       name:episode["EpisodeName"],
                       plot:episode["Overview"],
                       season_id:season.id,
-                      air_date:episode["FirstAired"] )
+                      air_date:episode["FirstAired"],
+                      tvdbid:episode["id"])
+      e.id = episode["id"]
+      e.save
     end
   end
 
