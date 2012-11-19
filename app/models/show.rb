@@ -1,7 +1,7 @@
 # require 'tvdb'
 
 class Show < ActiveRecord::Base
-  attr_accessible :name, :plot, :image
+  attr_accessible :name, :plot, :image, :banner
 
   has_many :seasons
   has_and_belongs_to_many :users
