@@ -8,12 +8,12 @@ jQuery(function($) {
   }
 
   function showProfileTabs(activeTab){
-    $("#tabs div").hide();
+    $("#divs div").hide();
     $(activeTab).show();
   }
 
   $("#tabs li").click(changeProfileTab);
 
-  $("#tabs li:first").click();
+  $("#tabs li").click();
 
 });
