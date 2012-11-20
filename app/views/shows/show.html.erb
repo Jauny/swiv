@@ -6,6 +6,8 @@
     <h2><%= @show.name %></h2>
   <% end %>
 
+  <%= render partial: 'track', locals: { show: @show } %>
+
   <section id="tabs">
     <ul class="nav nav-tabs" id="seasons-tabs">
       <% @show.seasons.each do |season| %>
