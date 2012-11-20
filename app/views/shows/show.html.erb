@@ -6,7 +6,9 @@
     <h2><%= @show.name %></h2>
   <% end %>
 
-  <%= render partial: 'track', locals: { show: @show } %>
+  <% if current_user %>
+    <%= render partial: 'track', locals: { show: @show } %>
+  <% end %>
 
   <section id="tabs">
     <ul class="nav nav-tabs" id="seasons-tabs">

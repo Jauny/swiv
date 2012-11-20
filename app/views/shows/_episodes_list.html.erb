@@ -2,7 +2,9 @@
     <table class="table table-striped table-hover table-condensed" <%= "id=#{season.number}" %>>
       <caption>
         Season <%= season.number %>
-        <%= render :partial => "shows/all_seen", :locals => { season: season } %>
+        <% if current_user %>
+          <%= render :partial => "shows/all_seen", :locals => { season: season } %>
+        <% end %>
       </caption>
       <thead>
         <tr>
