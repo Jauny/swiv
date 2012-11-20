@@ -2,7 +2,7 @@
     <table class="table table-striped table-hover table-condensed" <%= "id=#{season.number}" %>>
       <caption>
         Season <%= season.number %>
-        
+        <%= render :partial => "shows/all_seen", :locals => { season: season } %>
       </caption>
       <thead>
         <tr>
@@ -17,7 +17,7 @@
 
         <% sorted_episodes = season.episodes.sort { |a,b| b.number <=> a.number } %>
         <% sorted_episodes.each do |ep| %>
-          <% if current_user && ep.seen?(@user) %>
+          <% if current_user && ep.seen?(current_user) %>
             <tr class="success">
           <% else %>
             <tr>
@@ -26,7 +26,7 @@
             <td><%= ep.name %></td>
             <td><%= ep.plot %></td>
             <td><%= ep.air_date %></td>
-            <%= render :partial => 'status_icon', :locals => { ep: ep } %>
+            <%= render :partial => 'shows/status_icon', :locals => { ep: ep } %>
           </tr>
         <% end %>
       </tbody>

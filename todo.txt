@@ -1,0 +1,5 @@
+user page : tabs => js bug while clicking on a show
+
+search : accepting multiple words
+
+ajax : mark all as seen

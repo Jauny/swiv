@@ -6,7 +6,7 @@ class SeasonsController < ApplicationController
     @season.episodes.each { |ep| ep.mark_seen(current_user) }
 
     respond_to do |format|
-      format.js   { render 'all_seen.js' }
+      format.js   { render 'mark_all.js' }
       format.html { redirect_to show }
     end
   end
