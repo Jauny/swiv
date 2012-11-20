@@ -1,2 +1,0 @@
-$("table.active #all_seen").replaceWith("<%= j(render partial: 'shows/all_seen', locals: { :season => @season }) %>");
-// $("table.active").replaceWith("<%= j render partial: 'shows/episodes_list', locals: { show: @season.show } %>");
