@@ -9,7 +9,7 @@ class Show < ActiveRecord::Base
   has_and_belongs_to_many :users
 
   def self.from_tvdb(tvdb_id)
-    TVDB.build_all!(tvdb_series_id)
+    TVDB.build_all!(tvdb_id)
   end
 
 end
