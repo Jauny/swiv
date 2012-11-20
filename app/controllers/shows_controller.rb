@@ -32,7 +32,7 @@ class ShowsController < ApplicationController
     begin
       yield
     rescue ActiveRecord::RecordNotFound
-      Show.import(params[:id])
+      Show.from_tvdb(params[:id])
       retry
     end
   end
