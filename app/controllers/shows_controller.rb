@@ -12,8 +12,19 @@ class ShowsController < ApplicationController
   end
 
   def search
-    xml = HTTParty.get("http://www.thetvdb.com/api/GetSeries.php?seriesname=" + params[:search])
-    @shows = xml["Data"]["Series"]
+    terms = params[:search].split(' ').join("%20")
+    xml = HTTParty.get("http://www.thetvdb.com/api/GetSeries.php?seriesname=" + terms)["Data"]["Series"]
+    if xml.class == Hash
+      @shows = []
+      @shows << xml
+    else
+      @shows = xml
+    end
+
+    unless @shows
+      redirect_to root_path
+      flash[:error] = "No show found!"
+    end
   end
 
   private
