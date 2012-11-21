@@ -25,6 +25,9 @@ group :production do
 end
 
 group :development, :test do
+  gem 'spork-rails'
+  gem 'factory_girl_rails'
+  gem 'capybara'
   gem 'sqlite3'
   gem 'rspec-rails'
 end
