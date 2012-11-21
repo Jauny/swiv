@@ -1,6 +1,6 @@
 FactoryGirl.define do 
   factory :show do
-    name "A show"
-    tvdbid 123
+    name "Planet Earth"
+    tvdbid 79257
   end
 end

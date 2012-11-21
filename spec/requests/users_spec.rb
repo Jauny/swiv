@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 describe "users", :js => true do
   let!(:user) { create(:user) }
 
