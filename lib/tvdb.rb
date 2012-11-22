@@ -62,4 +62,54 @@ module TVDB
   def self.build_url(series_id)
     BASE_URL + API_KEY + '/series/' + series_id.to_s + '/all/en.xml'
   end
+
+
+  # For database update ~~~~~~
+  @last_update_time = 1353542621
+
+  def self.update_all
+    servertime = @last_update_time
+    shows_updated = find_shows_updated(servertime)
+
+    new_episodes = find_new_episodes(shows_updated)
+
+    add_new_episodes(new_episodes)
+  end
+
+  def self.add_new_episodes(new_episodes)
+    new_episodes.map   do |episode|
+      e = Episode.new( number:episode["Combined_episodenumber"],
+                       name:episode["EpisodeName"],
+                       plot:episode["Overview"],
+                       season_id:episode["Combined_season"],
+                       air_date:episode["FirstAired"],
+                       tvdbid:episode["id"])
+
+      e.id = episode["id"]
+      e.save
+    end
+  end
+
+  def self.find_new_episodes(shows_updated)
+    tvdb_episodes = []
+    local_episodes = []
+
+    shows_updated.each do |show|
+      tvdb_episodes << HTTParty.get(build_url(show))["Data"]["Episode"]
+      local_episodes << Show.find_by_tvdbid(show).seasons.each { |season| season.episodes }.flatten
+    end
+
+    tvdb_episodes - local_episodes
+  end
+
+  def self.find_shows_updated(servertime)
+    results = HTTParty.get("http://www.thetvdb.com/api/Updates.php?type=series&time=" + servertime.to_s)
+    @last_update_time =  results["Items"]["Time"]
+    @updated_series_number = results["Items"]["Series"]
+    @local_series = Show.all
+
+    @updated_series_number & @local_series
+  end
+
+
 end
