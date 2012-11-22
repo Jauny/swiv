@@ -30,11 +30,11 @@ describe "shows", :js => true do
     end
   end
 
-  # describe "POST /shows" do
-  #   it "imports a new show" do
-  #     visit show_path(79257)
-  #     page.should have_content('Planet Earth')
-  #   end
-  # end
+  describe "POST /shows" do
+    it "imports a new show" do
+      visit show_path(79842)
+      page.should have_content('Season')
+    end
+  end
 
 end
