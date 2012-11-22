@@ -65,7 +65,12 @@ module TVDB
 
 
   # For database update ~~~~~~
+  
   @last_update_time = 1353542621
+
+  def self.last_update_time
+    @last_update_time
+  end
 
   def self.update_all
     servertime = @last_update_time
@@ -104,7 +109,7 @@ module TVDB
 
   def self.find_shows_updated(servertime)
     results = HTTParty.get("http://www.thetvdb.com/api/Updates.php?type=series&time=" + servertime.to_s)
-    @last_update_time =  results["Items"]["Time"]
+    @last_update_time = results["Items"]["Time"]
     @updated_series_number = results["Items"]["Series"]
     @local_series = Show.all
 
