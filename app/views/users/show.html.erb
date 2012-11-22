@@ -26,6 +26,9 @@
       <h2>
         <%= @user.episodes.count == 0 ? "0 episode" : pluralize(@user.episodes.count, "episode") %> seen.
       </h2>
+
+      <%= render :partial => 'missed_episodes' %>
+
     </div>
   </section>
 

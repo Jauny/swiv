@@ -1,6 +1,6 @@
 <ul class="thumbnails">
 
-  <% @user.shows.each do |show| %>
+  <% @tracked_shows.each do |show| %>
     <li class="span2">
       <%= image_tag show.image %><br>
       <%= link_to show.name, show_path(show.id) %>

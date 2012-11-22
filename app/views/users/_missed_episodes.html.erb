@@ -1,0 +1,20 @@
+<h2>
+  <%= @all_missed_episodes.count %> Missed episodes
+</h2>
+
+<ul>
+  <% @tracked_shows.each do |show| %>
+    <li>
+      <%= link_to show.name, show_path(show) %>
+      <ul>
+        <% show.episodes.select do |ep| %>
+          <% if !ep.seen?(@user) %>
+          <li>
+            <%= ep.name %>
+          </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>

@@ -13,4 +13,12 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :shows
   has_and_belongs_to_many :episodes
+
+  def all_seen_ep
+    self.shows.map do |show| 
+      show.episodes.select do |ep|
+        ep.seen?(self)
+      end
+    end.flatten
+  end
 end

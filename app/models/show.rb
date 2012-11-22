@@ -12,4 +12,10 @@ class Show < ActiveRecord::Base
     TVDB.build_all!(tvdb_id)
   end
 
+  def episodes
+    self.seasons.map do |season|
+      season.episodes
+    end.flatten
+  end
+
 end
