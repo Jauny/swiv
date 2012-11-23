@@ -10,7 +10,7 @@
         <% show.episodes.select do |ep| %>
           <% if !ep.seen?(@user) %>
           <li>
-            <%= ep.name %>
+            <%= link_to '<i class="icon-remove"></i>'.html_safe + ep.name, episodes_users_path(:episode_id => ep.id, :show_id => show.id), :method => :post, :remote => true %>
           </li>
           <% end %>
         <% end %>

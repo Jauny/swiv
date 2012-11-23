@@ -9,7 +9,7 @@
     <% @shows.each do |show| %>
       <li class="span2 thumbnails">
         
-        <%= image_tag show.image %>
+        <%= image_tag show.image ? show.image : "http://lorempixel.com/170/250/" %>
         <%= link_to show.name, show_path(show.id) %>
         <br>
 
