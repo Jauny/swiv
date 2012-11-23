@@ -3,7 +3,7 @@ class ShowsController < ApplicationController
 
   def index
     @user = current_user
-    @shows = Show.all
+    @shows = Show.all.sort { |a,b| b.users.count <=> a.users.count }
   end
 
   def show
