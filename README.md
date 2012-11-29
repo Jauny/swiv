@@ -1,6 +1,6 @@
 swiv
 ====
-[www.swiv.co]('http://www.swiv.co')
+[www.swiv.co]("http://www.swiv.co")
 TV Show Tracker allowing you to track shows, mark episodes seen, and never miss an episode or forget which ones you've not seen again. IN YOUR LIFE!
 
 Work in progres...
