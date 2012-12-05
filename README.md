@@ -10,3 +10,4 @@ Work in progres...
   + remove seasons table and insert season number in episodes
 * Social : omniauth with facebook for friends linking and comparison
 * Notifications : When a tracked show will air soon, send email, message, etc.
+* Calendar for members to see which show they track are airing soon, aired recently.
