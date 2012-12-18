@@ -27,7 +27,6 @@ module TVDB
     s.id = tvdbid
     s.save
     return s
-
   end
 
   def self.parse_season(xml, show)
