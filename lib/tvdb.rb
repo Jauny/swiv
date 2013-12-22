@@ -19,8 +19,8 @@ module TVDB
   def self.parse_show(xml, series_id)
     name   = xml['Data']['Series']['SeriesName']
     plot   = xml['Data']['Series']['Overview']
-    image  = "http://www.thetvdb.com/banners/" + xml['Data']['Series']['poster']
-    banner = "http://www.thetvdb.com/banners/" + xml['Data']['Series']['banner']
+    image  = "http://www.thetvdb.com/banners/" + xml['Data']['Series']['poster'].to_s
+    banner = "http://www.thetvdb.com/banners/" + xml['Data']['Series']['banner'].to_s
     tvdbid = xml['Data']['Series']['id']
 
     s = Show.new(name: name, plot: plot, image: image, banner: banner, tvdbid: tvdbid )
@@ -64,7 +64,7 @@ module TVDB
 
 
   # For database update ~~~~~~
-  
+
   @last_update_time = 1353542621
 
   def self.last_update_time

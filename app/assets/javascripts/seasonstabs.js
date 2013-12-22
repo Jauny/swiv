@@ -1,4 +1,4 @@
-jQuery(function($) {
+$(function() {
   function changeTab(e) {
     e.preventDefault();
     $("#tabs li.active").removeClass("active");

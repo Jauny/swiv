@@ -4,6 +4,7 @@ class Episode < ActiveRecord::Base
   validates :tvdbid, presence: true
   validates :name, presence: true
 
+  belongs_to :show, through: :season
   belongs_to :season
   has_and_belongs_to_many :users
 

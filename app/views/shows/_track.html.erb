@@ -1,7 +1,7 @@
 <div id="track_<%= dom_id(show) %>" class="track">
-  <% if user_signed_in? && @user.shows.include?(show) %>
+  <% if user_signed_in? && current_user.shows.include?(show) %>
     <%= link_to '<i class="icon-remove"></i> untrack show'.html_safe, shows_user_path(:id => show.id), :method => :delete, :remote => true %>
-  <% elsif user_signed_in? && !@user.shows.include?(show) %>
+  <% elsif user_signed_in? && !current_user.shows.include?(show) %>
     <%= link_to '<i class="icon-ok"></i> track show'.html_safe, shows_users_path(:show_id => show.id), :method => :post, :remote => true %>
   <% end %>
 </div>

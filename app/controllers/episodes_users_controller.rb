@@ -1,10 +1,9 @@
 class EpisodesUsersController < ApplicationController
 
   def create
-    @user = current_user
     @episode = Episode.find(params[:episode_id])
     @show = @episode.season.show
-    @user.episodes << @episode
+    current_user.episodes << @episode
 
     respond_to do |format|
       format.js   { render 'replace_status.js' }
@@ -13,10 +12,9 @@ class EpisodesUsersController < ApplicationController
   end
 
   def destroy
-    @user = current_user
     @episode = Episode.find(params[:id])
     @show = @episode.season.show
-    @user.episodes.delete(@episode)
+    current_user.episodes.delete(@episode)
 
     respond_to do |format|
       format.js   { render 'replace_status.js' }

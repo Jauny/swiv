@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe User do 
+describe User do
   it "is invalid without a name" do
     user = User.new
     user.should_not be_valid
